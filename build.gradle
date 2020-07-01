@@ -51,7 +51,7 @@ ext {
     okhttputilsVersion = '2.6.2'
     eventbusVersion = '3.2.0'
     lifecycleVersion = '2.0.0'
-    lifecycleExtensionsVersion = '2.1.0-alpha03'
+    leakcanaryVersion = '2.3'
 
     okhttpVersion = '4.2.0'
     loggingInterceptorVersion = '3.10.0'

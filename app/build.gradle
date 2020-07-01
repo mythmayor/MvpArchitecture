@@ -47,6 +47,8 @@ dependencies {
     implementation "com.zhy:okhttputils:$rootProject.ext.okhttputilsVersion"//okhttputils
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventbusVersion"//eventbus
     implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.ext.lifecycleVersion"//lifecycle
+    //leakcanary: 使用debugImplementation,因为LeakCanary只应该在调试版本中使用。另外当前版本无需在Application中进行初始化。
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakcanaryVersion"
     //okhttp3
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingInterceptorVersion"

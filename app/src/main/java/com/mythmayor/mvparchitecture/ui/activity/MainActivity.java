@@ -8,9 +8,12 @@ import android.widget.TextView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.mythmayor.mvparchitecture.R;
 import com.mythmayor.mvparchitecture.base.BaseActivity;
+import com.mythmayor.mvparchitecture.base.BaseDialog;
 import com.mythmayor.mvparchitecture.receiver.NetworkBroadcastReceiver;
+import com.mythmayor.mvparchitecture.ui.dialog.LogoutDialog;
 import com.mythmayor.mvparchitecture.utils.IntentUtil;
 import com.mythmayor.mvparchitecture.utils.LogUtil;
+import com.mythmayor.mvparchitecture.utils.PrefUtil;
 
 /**
  * Created by mythmayor on 2020/6/30.
@@ -40,6 +43,7 @@ public class MainActivity extends BaseActivity implements NetworkBroadcastReceiv
 
     @Override
     protected void initData(Intent intent) {
+        PrefUtil.putBoolean(this, PrefUtil.IS_USER_LOGIN, true);
         //注册网络连状态监听
         IntentFilter networkFilter = new IntentFilter();
         networkFilter.addAction(NetworkBroadcastReceiver.ACTION_CONNECTIVITY_CHANGE);
@@ -51,11 +55,32 @@ public class MainActivity extends BaseActivity implements NetworkBroadcastReceiv
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_logout:
-                IntentUtil.startActivityClearTask(this, LoginActivity.class);
+                showLogoutDialog();
                 break;
             default:
                 break;
         }
+    }
+
+    private void showLogoutDialog() {
+        String content = "确定要退出登录么？";
+        final LogoutDialog dialog = new LogoutDialog(this, content, "取消", "确定");
+        dialog.setNoOnclickListener(new BaseDialog.onNoOnclickListener() {
+            @Override
+            public void onNoClick(Object o) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setYesOnclickListener(new BaseDialog.onYesOnclickListener() {
+            @Override
+            public void onYesClick(Object o) {
+                dialog.dismiss();
+                PrefUtil.clear(MainActivity.this);
+                IntentUtil.startActivityClearTask(MainActivity.this, LoginActivity.class);
+            }
+        });
+        dialog.show();
+        //ProjectUtil.setDialogWindowAttr(dialog);
     }
 
     @Override

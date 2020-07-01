@@ -46,7 +46,7 @@
         <!--android7.0读取文件需要注册FileProvider-->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.mythmayor.m2006mvparchitecture.fileprovider"
+            android:authorities="com.mythmayor.mvparchitecture.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
