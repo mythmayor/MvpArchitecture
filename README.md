@@ -30,7 +30,7 @@
 
 #### MvvmArchitecture项目
 
-Github地址：
+Github地址：https://github.com/mythmayor/MvvmArchitecture
 
 #### 个人博客
 
@@ -74,7 +74,7 @@ Github地址：
 
 #### MvvmArchitecture Project
 
-Github address: 
+Github address: https://github.com/mythmayor/MvvmArchitecture
 
 #### Personal Blog
 
